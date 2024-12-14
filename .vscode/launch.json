@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-GatewawayApplication<Gatewaway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.Gatewaway.GatewawayApplication",
+            "projectName": "Gatewaway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
