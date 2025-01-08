@@ -1,7 +1,20 @@
-
 spring:
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]': # Aplica a todas las rutas manejadas por el Gateway
+            allowedOrigins:
+              - "http://localhost:3000" # Origen permitido (frontend)
+            allowedMethods:
+              - "GET"
+              - "POST"
+              - "PUT"
+              - "DELETE"
+              - "OPTIONS"
+            allowedHeaders:
+              - "*" # Permite todos los encabezados
+            allowCredentials: true # Permite credenciales (cookies, etc.)
       routes:
         - id: clasificacion
           uri: lb://CLASIFICACION
@@ -10,10 +23,10 @@ spring:
           filters:
             - RewritePath=/clasificacion/(?<segment>.*), /${segment}
 
-
         - id: descripciones_minimas_route
           uri: lb://DESCRIPCIONES-MINIMAS
           predicates:
-              - Path=/descripciones/**
+            - Path=/descripciones/**
           filters:
             - RewritePath=/descripciones/(?<segment>.*), /${segment}
+
